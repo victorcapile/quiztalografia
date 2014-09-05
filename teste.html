@@ -1,0 +1,271 @@
+<html>
+<head>
+  <meta charset="utf-8">
+	<title>Quiztalografia</title>
+    <link rel="shortcut icon" href="icone.png" type="image/x-icon"/>
+<style type="text/css">
+html {
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  overflow-y:scroll;
+}    
+html, body{
+    width:100%;
+    height:100%;
+    margin:0;
+    padding:0;
+}
+.pagina {
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    display:none;
+}
+.pagina.ativa {
+    display:block;
+}
+.header {
+	text-align: center;
+    font-size: 2.0em;
+	font-family: Segoe UI Light;
+	color: #fff;
+}
+.titulo {
+  font-size: 2.5em;
+  margin-top: 30px;
+}
+.cristal {
+  width: 8em;
+}
+.jogar {
+	text-align: center;
+	text-decoration: none;
+	font-size: 1.5em;
+	font-family: Segoe UI Light;
+	margin-top: 50px;
+  margin-bottom: 10px;
+}
+.jogar a{
+  display:inline-block;
+  padding:0.5em 1em;
+  font-size:1.5em;
+  -webkit-border-radius: 0.5em; 
+  -moz-border-radius: 0.5em; 
+  border-radius: 0.5em;
+
+    -webkit-transition: background-color ease-out 500ms;
+    -moz-transition: background-color ease-out 500ms;
+    -o-transition: background-color ease-out 500ms;
+    transition: background-color ease-out 500ms;
+}
+.jogar a:link, .jogar a:visited{
+  background-color:#6C007F;
+  color:#fff;
+  text-decoration:none;
+}
+.jogar a:active, .jogar a:hover{
+  background-color:#AC00CC;
+}
+.materias {
+  text-align: center;
+}
+.materias2 {
+  margin-left: 390px; 
+}
+.materias3 {
+  margin-left: 470px;
+  margin-right: 20px; 
+}
+.dificuldade-facil {
+  text-align: center;
+  margin-top: 40px;
+}
+.dificuldade-medio {
+  text-align: center;
+  margin-top: 20px;
+}
+.dificuldade-dificil {
+  text-align: center;
+  margin-top: 20px;
+}
+.voltar {
+  margin-left: 150px;
+}
+.voltar2 {
+  text-align: right;
+  margin-right: 100px;
+}
+.pergunta {
+  margin: 50px 90px 10px 90px;
+  font-size: 1.8em;
+  color: #fff;
+  background-color: #6C007F;
+  background-size: 4em;
+  border-radius: 10px;
+  text-align: center;
+  font-family: Segoe UI Light;
+}
+.escolha {
+  margin-top: 10px;
+}
+.alternativas {
+  margin-right: 4em;
+  margin-top: 1em;
+  margin-bottom: 20px;
+  margin-left: 3em;
+  font-size: 1.8em;
+  color: #fff;
+  background-color: #6C007F;
+  background-size: 3em;
+  border-radius: 10px;
+  text-align: center;
+  font-family: Segoe UI Light;
+}
+.alternativas:hover {
+  background-color: #6C005D;
+  -webkit-transition: background-color ease-out 950ms;
+  -moz-transition: background-color ease-out 950ms;
+  -o-transition: background-color ease-out 950ms;
+  transition: background-color ease-out 950ms; 
+}
+a {
+  text-decoration: none;  
+  color: #fff;
+}
+</style>
+</head>
+<body background="background.jpg">
+
+<div class="pagina ativa" id="inicio">
+  <div class="header"><h1 class="titulo">Quiztalografia</H1><img src="icone.png" class="cristal" /></div>
+  <div class="jogar"><a href="#disciplinas" id="jogar" onclick="return quiz(this);">JOGAR</a></div>
+</div>
+
+<div class="pagina" id="disciplinas">
+  <div class = "header"><h1 class="escolha">Escolha sua disciplina:</h1> </div>
+  <div class = "materias">
+    <a href="#dificuldade/historia"><img src = "historia-materia.png" id="historia" onmouseover="this.src='historia-materia2.png'" onmouseout="this.src='historia-materia.png'" width="140" /></a>
+    <a href="#dificuldade/biologia"><img src = "biologia-materia.png" id="biologia" onmouseover="this.src='biologia-materia2.png'" onmouseout="this.src='biologia-materia.png'" width="140" /></a>
+    <a href="#dificuldade/fisica" width="140"><img src = "fisica-materia.png" id="fisica" onmouseover="this.src='fisica-materia2.png'" onmouseout="this.src='fisica-materia.png'" width="140" /></a>
+    <br>
+  </div>
+  <div class ="materias2">
+      <a href = "#dificuldade/geografia"><img src = "geografia-materia.png" id="geografia" onmouseover="this.src='geografia-materia2.png'" onmouseout="this.src='geografia-materia.png'" width="140" /></a>
+      <a href = "#dificuldade/matematica"><img src = "matematica-materia.png" id="matematica" onmouseover="this.src='matematica-materia2.png'" onmouseout="this.src='matematica-materia.png'" width="140" /></a>
+      <a href = "#dificuldade/quimica"><img src = "quimica-materia.png" id="quimica" onmouseover="this.src='quimica-materia2.png'" onmouseout="this.src='quimica-materia.png'" width="140" /></a>
+    <br>
+  </div>
+  <div class = "materias3">
+      <a href = "#dificuldade/ingles"><img src = "ingles-materia.png" id="ingles" onmouseover="this.src='ingles-materia2.png'" onmouseout="this.src='ingles-materia.png'" width="140" /></a>
+      <a href = "#dificuldade/sociologia"><img src = "sociologia-materia.png" id="sociologia" onmouseover="this.src='sociologia-materia2.png'" onmouseout="this.src='sociologia-materia.png'" width="140" /></a>      
+      <a href="#inicio" onclick="return quiz(this);"><img src="back-button.png" width="80" onmouseover="this.src='back-button2.png'" onmouseout="this.src='back-button.png'" style="margin-left:50px" /></a>    
+  </div>
+</div>
+<div class="pagina" id="dificuldade">
+  <div class="header"><h1>Escolha sua dificuldade:</h1></div>
+  <div class="dificuldade-facil"><a class="botao" data-dificuldade="facil" href="#pergunta"><img src="dificuldade-facil.png" width=370 onmouseover="this.src='dificuldade-facil2.png'" onmouseout="this.src='dificuldade-facil.png'" /></a></div>
+  <div class="dificuldade-medio"><a class="botao" data-dificuldade="medio" href="#pergunta"><img src="dificuldade-medio.png" width=370 onmouseover="this.src='dificuldade-medio2.png'" onmouseout="this.src='dificuldade-medio.png'" /></a></div>
+  <div class="dificuldade-dificil"><a class="botao" data-dificuldade="dificil" href="#pergunta"><img src="difuldade-dificil.png" width=370 onmouseover="this.src='difuldade-dificil2.png'" onmouseout="this.src='difuldade-dificil.png'" /></a></div>
+  <div class="voltar"><a href="#disciplinas"><img src="back-button.png" width="90" onmouseover="this.src='back-button2.png'" onmouseout="this.src='back-button.png'" /></a></div>
+</div>
+<div class="pagina" id="pergunta">
+  <div class="header"><h1></h1></div>
+  <div id="questao"></div>
+  <br />
+  <div id="respostas"></div>
+  <div class="voltar2"><a href="#disciplinas"><img src="back-button.png" width="90" onmouseover="this.src='back-button2.png'" onmouseout="this.src='back-button.png'" /></a></div>
+</div>
+
+<script type="text/javascript" src="quiz-dados.js"></script>
+<script type="text/javascript">
+
+(function(){
+
+var quiz=function(){
+  return true;
+}
+
+quiz.dificuldade = function(p)
+{
+  var a = p.querySelectorAll('a.botao'), i=a.length;
+  if(quiz.parametros.length<2) window.location.hash='inicio';
+  console.log('estou na página de dificuldade!!!', a, i);
+  while(i-- > 0) {
+    console.log('colocar o link: #pergunta/'+quiz.parametros[1]+'/'+a[i].getAttribute('data-dificuldade'));
+    a[i].setAttribute('href', '#pergunta/'+quiz.parametros[1]+'/'+a[i].getAttribute('data-dificuldade'));
+  }
+}
+quiz.disciplinas = function(p)
+{
+  console.log('estou na página de disciplinas!!!');
+}
+
+quiz.pergunta = function(p)
+{
+  if(quiz.parametros.length<3) window.location.hash='inicio';
+  var b = Q[quiz.parametros[1]][ quiz.parametros[2] ], c = Math.floor(Math.random()*b.length);
+  console.log('estou na página de pergunta!!!', b[c]);
+
+  var s = '<h1 class="pergunta">'+b[c].pergunta+'</h1>';
+  document.getElementById('questao').innerHTML = s;
+  var alternativas = 'abcdefghijklmnop', i=-1;
+  s='<ol>';
+  while(i++ <alternativas.length) {
+    var l='alternativa_'+alternativas[i];
+    console.log(l);
+    if(l in b[c]) {
+      s+= '<li class="alternativas"><a href="#resposta/'+quiz.parametros.slice(1).join('/')+'/'+alternativas[i]+'">'+b[c][l]+'</a></li>';
+    } else {
+      break;
+    }
+  }
+  s+='</ol>';
+  //s = '<h2 class="alternativas">'+b[c].respostas+'</h2><h2 class="alternativas">'+b[c].alternativa_a+'</h2><h2 class="alternativas">'+b[c].respostas+'</h2>';
+  document.getElementById('respostas').innerHTML = s;
+}
+quiz.parametros=[];
+
+var paginaAnterior='inicio';
+
+function joga()
+{
+  var a = (window.location.hash)?(window.location.hash.substr(1).split('/')):(['inicio']);
+  if(a.length>0) {
+    var link=a[0];
+    quiz.parametros = a;
+    if(link!=paginaAnterior) {
+      var e;
+      if((e=document.getElementById(link)) && e.className.indexOf('pagina')>-1) {
+        carregaPagina(link);
+      } //else if(link.search(//))
+    }
+  }
+}
+
+function carregaPagina(link)
+{
+  var p = document.querySelectorAll('.pagina.ativa'), i=p.length;
+  while(i-- > 0) {
+    p[i].className = 'pagina';
+  }
+  var p=document.getElementById(link);
+  p.className = 'pagina ativa';
+  if(link in quiz) {
+    quiz[link](p);
+  }
+
+  paginaAnterior = link;
+}
+
+
+window.setInterval(joga, 1000);
+
+window.quiz=quiz;
+})();
+
+</script>
+</body>
+</html>
