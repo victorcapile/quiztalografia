@@ -4,11 +4,47 @@
 	<title>Quiztalografia</title>
     <link rel="shortcut icon" href="icone.png" type="image/x-icon"/>
 <style type="text/css">
+
+
+@font-face {
+    font-family: 'caviar_dreams';
+    src: url('CaviarDreams-webfont.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'caviar_dreams';
+    src: url('Caviar_Dreams_Bold-webfont.ttf');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'faux_snow';
+    src: url('fauxsnow-webfont.ttf');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
 html {
   font-size: 100%;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
-  overflow-y:scroll;
+  overflow-y:hidden;
+  overflow-x:hidden;
+
+background: #7e3b8a;
+background: -moz-linear-gradient(-45deg,  #7e3b8a 0%, #e3cde2 100%);
+background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#7e3b8a), color-stop(100%,#e3cde2));
+background: -webkit-linear-gradient(-45deg,  #7e3b8a 0%,#e3cde2 100%);
+background: -o-linear-gradient(-45deg,  #7e3b8a 0%,#e3cde2 100%);
+background: -ms-linear-gradient(-45deg,  #7e3b8a 0%,#e3cde2 100%);
+background: linear-gradient(135deg,  #7e3b8a 0%,#e3cde2 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7e3b8a', endColorstr='#e3cde2',GradientType=1 );
+
 }    
 html, body{
     width:100%;
@@ -16,6 +52,14 @@ html, body{
     margin:0;
     padding:0;
 }
+
+body {
+  font: 400 16px/24px 'caviar_dreams', 'sans-serif';
+}
+.cristal{
+  font: 400 480px/480px 'faux_snow', 'wingdings', 'display';
+}
+h1,h2,h3{font-weight:normal;}
 .pagina {
     position:absolute;
     top:0;
@@ -28,23 +72,19 @@ html, body{
     display:block;
 }
 .header {
+  margin:2em 0 1em 0;
 	text-align: center;
     font-size: 2.0em;
-	font-family: Segoe UI Light;
 	color: #fff;
 }
 .titulo {
   font-size: 2.5em;
   margin-top: 30px;
 }
-.cristal {
-  width: 8em;
-}
 .jogar {
 	text-align: center;
 	text-decoration: none;
 	font-size: 1.5em;
-	font-family: Segoe UI Light;
 	margin-top: 50px;
   margin-bottom: 10px;
 }
@@ -70,8 +110,80 @@ html, body{
   background-color:#AC00CC;
 }
 .materias {
-  text-align: center;
+  margin: 0 auto;max-width:640px;
+  text-align: center;border:1px solid red;
+  margin-top:5em;
 }
+.materia {
+  text-align:center;
+  text-transform:uppercase;
+  display:inline-block;
+  font-weight: bold;
+  font-size:2em;
+  line-height:2.89em;
+  position: relative;
+  width: 5em; 
+  height: 2.89em;
+  background-color: #64C7CC;
+  margin: 0.9em 0;
+  margin-right:0.1em;
+}
+
+.materia:before,
+.materia:after {
+  content: "";
+  position: absolute;
+  width: 0;
+  border-left: 2.5em solid transparent !important;
+  border-right: 2.5em solid transparent !important;
+}
+
+.materia:before {
+  left:0;
+  bottom: 100%;
+  border-bottom: 1.44em solid #64C7CC;
+}
+.materia:after {
+  left:0;
+  top: 100%;
+  width: 0;
+  border-top: 1.44em solid #64C7CC;
+}
+
+.materia.historia{background-color:#fd0;}
+.materia.historia:before,.materia.historia:after{border-color:#fd0;}
+
+.materia.historia:hover{background-color:#ccb100;}
+.materia.historia:hover:before,.materia.historia:hover:after{border-color:#ccb100;}
+
+
+.materia.biologia{background-color:#032892;}
+.materia.biologia:before,.materia.biologia:after{border-color:#032892;}
+
+.materia.biologia:hover{background-color:#021b5e;}
+.materia.biologia:hover:before,.materia.biologia:hover:after{border-color:#021b5e;}
+
+
+.materia.fisica{background-color:#fd0;margin-right:2.65em;}
+.materia.fisica:before,.materia.fisica:after{border-color:#fd0;}
+
+.materia.fisica:hover{background-color:#ccb100;}
+.materia.fisica:hover:before,.materia.fisica:hover:after{border-color:#ccb100;}
+
+
+
+
+.materia.geografia{background-color:#38bf38;margin-left:2.65em;}
+.materia.geografia:before,.materia.geografia:after{border-color:#38bf38;}
+.materia.geografia span{font-size:0.8em;}
+
+.materia.geografia:hover{background-color:#298c29;}
+.materia.geografia:hover:before,.materia.geografia:hover:after{border-color:#298c29;}
+
+
+.materia.ingles{margin-left:2.65em;}
+
+
 .materias2 {
   margin-left: 390px; 
 }
@@ -106,7 +218,6 @@ html, body{
   background-size: 4em;
   border-radius: 10px;
   text-align: center;
-  font-family: Segoe UI Light;
 }
 .escolha {
   margin-top: 10px;
@@ -122,7 +233,6 @@ html, body{
   background-size: 3em;
   border-radius: 10px;
   text-align: center;
-  font-family: Segoe UI Light;
 }
 .alternativas:hover {
   background-color: #6C005D;
@@ -137,16 +247,28 @@ a {
 }
 </style>
 </head>
-<body background="background.jpg">
+<body>
 
 <div class="pagina ativa" id="inicio">
-  <div class="header"><h1 class="titulo">Quiztalografia</H1><img src="icone.png" class="cristal" /></div>
+  <div class="header"><h1 class="titulo">Quiztalografia</h1><span class="cristal">&#160;</span></div>
   <div class="jogar"><a href="#disciplinas" id="jogar" onclick="return quiz(this);">JOGAR</a></div>
 </div>
 
 <div class="pagina" id="disciplinas">
   <div class = "header"><h1 class="escolha">Escolha sua disciplina:</h1> </div>
   <div class = "materias">
+    <a href="#dificuldade/historia" class="materia historia">História</a>
+    <a href="#dificuldade/biologia" class="materia biologia">Biologia</a>
+    <a href="#dificuldade/fisica" class="materia fisica">Física</a>
+    <br />
+    <a href="#dificuldade/geografia" class="materia geografia"><span>Geografia</span></a>
+    <a href="#dificuldade/matematica" class="materia matematica">Matemática</a>
+    <a href="#dificuldade/quimica" class="materia quimica">Química</a>
+    <br />
+    <a href="#dificuldade/ingles" class="materia ingles">Inglês</a>
+    <a href="#dificuldade/sociologia" class="materia sociologia">Sociologia</a>
+    <br />
+    <!--
     <a href="#dificuldade/historia"><img src = "historia-materia.png" id="historia" onmouseover="this.src='historia-materia2.png'" onmouseout="this.src='historia-materia.png'" width="140" /></a>
     <a href="#dificuldade/biologia"><img src = "biologia-materia.png" id="biologia" onmouseover="this.src='biologia-materia2.png'" onmouseout="this.src='biologia-materia.png'" width="140" /></a>
     <a href="#dificuldade/fisica" width="140"><img src = "fisica-materia.png" id="fisica" onmouseover="this.src='fisica-materia2.png'" onmouseout="this.src='fisica-materia.png'" width="140" /></a>
@@ -160,7 +282,8 @@ a {
   </div>
   <div class = "materias3">
       <a href = "#dificuldade/ingles"><img src = "ingles-materia.png" id="ingles" onmouseover="this.src='ingles-materia2.png'" onmouseout="this.src='ingles-materia.png'" width="140" /></a>
-      <a href = "#dificuldade/sociologia"><img src = "sociologia-materia.png" id="sociologia" onmouseover="this.src='sociologia-materia2.png'" onmouseout="this.src='sociologia-materia.png'" width="140" /></a>      
+      <a href = "#dificuldade/sociologia"><img src = "sociologia-materia.png" id="sociologia" onmouseover="this.src='sociologia-materia2.png'" onmouseout="this.src='sociologia-materia.png'" width="140" /></a> 
+      --> 
       <a href="#inicio" onclick="return quiz(this);"><img src="back-button.png" width="80" onmouseover="this.src='back-button2.png'" onmouseout="this.src='back-button.png'" style="margin-left:50px" /></a>    
   </div>
 </div>
@@ -187,6 +310,17 @@ a {
 var quiz=function(){
   return true;
 }
+var alternativas = 'abcdefghijklmnop';
+
+quiz.inicio = function(p)
+{
+  console.log('inicio!!!');
+  var a = p.querySelectorAll('span.cristal'), i=a.length;
+  while(i-- > 0) {
+    a[i].innerHTML = alternativas[Math.floor(Math.random()*alternativas.length)];
+  }
+}
+
 
 quiz.dificuldade = function(p)
 {
@@ -211,7 +345,7 @@ quiz.pergunta = function(p)
 
   var s = '<h1 class="pergunta">'+b[c].pergunta+'</h1>';
   document.getElementById('questao').innerHTML = s;
-  var alternativas = 'abcdefghijklmnop', i=-1;
+  var i=-1;
   s='<ol>';
   while(i++ <alternativas.length) {
     var l='alternativa_'+alternativas[i];
@@ -228,7 +362,7 @@ quiz.pergunta = function(p)
 }
 quiz.parametros=[];
 
-var paginaAnterior='inicio';
+var paginaAnterior='';
 
 function joga()
 {
