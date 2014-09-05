@@ -4,11 +4,90 @@
 	<title>Quiztalografia</title>
     <link rel="shortcut icon" href="icone.png" type="image/x-icon"/>
 <style type="text/css">
+
+
+@font-face {
+    font-family: 'caviar_dreams';
+    src: url('CaviarDreams-webfont.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'caviar_dreams';
+    src: url('Caviar_Dreams_Bold-webfont.ttf');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'faux_snow';
+    src: url('fauxsnow-webfont.ttf');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+  font-family: 'quiztalografia';
+  src: url('quiztalografia.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+ 
+ [class^="icon-"]:before, [class*=" icon-"]:before {
+  font-family: "quiztalografia";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+ 
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: .2em;
+  text-align: center;
+  /* opacity: .8; */
+ 
+  font-variant: normal;
+  text-transform: none;
+     
+  line-height: 1em;
+ 
+  margin-left: .2em;
+ 
+}
+ 
+.icon-emo-wink2:before { content: '\e800'; } 
+
+.icon-emo-cry:before { content: '\e801'; } 
+
+.icon-left-big:before {
+   content: '\e802'; 
+   font-size: 4em;
+   margin-left: 4em;
+
+ }
+ .icon-left-big:hover, .icon-left-big:active {
+   content: '\e802'; 
+   color: #020302;
+
+ }
+
+
 html {
   font-size: 100%;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
-  overflow-y:scroll;
+  overflow-y:hidden;
+  overflow-x:hidden;
+
+background: #7e3b8a;
+background: -moz-linear-gradient(-45deg,  #7e3b8a 0%, #e3cde2 100%);
+background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#7e3b8a), color-stop(100%,#e3cde2));
+background: -webkit-linear-gradient(-45deg,  #7e3b8a 0%,#e3cde2 100%);
+background: -o-linear-gradient(-45deg,  #7e3b8a 0%,#e3cde2 100%);
+background: -ms-linear-gradient(-45deg,  #7e3b8a 0%,#e3cde2 100%);
+background: linear-gradient(135deg,  #7e3b8a 0%,#e3cde2 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7e3b8a', endColorstr='#e3cde2',GradientType=1 );
+
 }    
 html, body{
     width:100%;
@@ -16,36 +95,404 @@ html, body{
     margin:0;
     padding:0;
 }
+
+body {
+  font: 400 16px/24px 'caviar_dreams', 'sans-serif';
+}
+.cristal{
+  font: 400 500px/500px 'faux_snow', 'wingdings', 'display';
+}
+h1,h2,h3{font-weight:normal;}
+.pagina {
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    display:none;
+}
+.pagina.ativa {
+    display:block;
+}
 .header {
+  margin:2em 0 1em 0;
 	text-align: center;
-    font-size: 2.5em;
-	font-family: Segoe UI Light;
+  font-size: 3em;
 	color: #fff;
-	margin-top: 50px;
+}
+.titulo {
+  font-size: 2.5em;
+  margin-top: 30px;
 }
 .jogar {
 	text-align: center;
 	text-decoration: none;
-	font-size: 1.5em;
-	font-family: Segoe UI Light;
+	font-size: 2em;
 	margin-top: 50px;
   margin-bottom: 10px;
 }
-.facebook {
-    margin-bottom: 1em;
+.jogar a{
+  display:inline-block;
+  padding:0.5em 1em;
+  font-size:1.5em;
+  -webkit-border-radius: 0.5em; 
+  -moz-border-radius: 0.5em; 
+  border-radius: 0.5em;
+  -webkit-transition: background-color ease-out 500ms;
+  -moz-transition: background-color ease-out 500ms;
+  -o-transition: background-color ease-out 500ms;
+  transition: background-color ease-out 500ms;
 }
-#jogar a:hover {
-    background : url("jogarbutton2.png");  
+.jogar a:link, .jogar a:visited{
+  background-color:#6C007F;
+  color:#fff;
+  text-decoration:none;
+}
+.jogar a:active, .jogar a:hover{
+  background-color:#AC00CC;
+}
+.materias {
+  margin: 0 auto;max-width:640px;
+  text-align: center;
+  margin-top:5em;
+}
+.materia {
+  text-align:center;
+  text-transform:uppercase;
+  display:inline-block;
+  font-weight: bold;
+  font-size:2em;
+  line-height:2.89em;
+  position: relative;
+  width: 5em; 
+  height: 2.89em;
+  background-color: #64C7CC;
+  margin: 0.9em 0;
+  margin-right:0.1em;
+  -webkit-transition: background-color ease-out 500ms;
+  -moz-transition: background-color ease-out 500ms;
+  -o-transition: background-color ease-out 500ms;
+  transition: background-color ease-out 500ms;
+}
+
+.materia:before,
+.materia:after {
+  content: "";
+  position: absolute;
+  width: 0;
+  border-left: 2.5em solid transparent !important;
+  border-right: 2.5em solid transparent !important;
+}
+
+.materia:before {
+  left:0;
+  bottom: 100%;
+  border-bottom: 1.44em solid #64C7CC;
+
+}
+.materia:after {
+  left:0;
+  top: 100%;
+  width: 0;
+  border-top: 1.44em solid #64C7CC;
+}
+
+.materia.historia{background-color:#fd0;}
+.materia.historia:before,.materia.historia:after{border-color:#fd0;}
+
+.materia.historia:hover{background-color:#ccb100;}
+.materia.historia:hover:before,.materia.historia:hover:after{border-color:#ccb100;}
+
+
+.materia.biologia{background-color:#032892;}
+.materia.biologia:before,.materia.biologia:after{border-color:#032892;}
+
+.materia.biologia:hover{background-color:#021b5e;}
+.materia.biologia:hover:before,.materia.biologia:hover:after{border-color:#021b5e;}
+
+
+.materia.fisica{background-color:#FF0000;margin-right:2.65em;}
+.materia.fisica:before,.materia.fisica:after{border-color:#FF0000;}
+
+.materia.fisica:hover{background-color:#FF2722;}
+.materia.fisica:hover:before,.materia.fisica:hover:after{border-color:#FF2722;}
+
+.materia.matematica{background-color:#E854BD;}
+.materia.matematica:before,.materia.matematica:after{border-color:#E854BD;}
+
+.materia.matematica:hover{background-color:#FF5DD0;}
+.materia.matematica:hover:before,.materia.matematica:hover:after{border-color:#FF5DD0;}
+.materia.matematica span{font-size:0.7em;}
+
+.materia.quimica{background-color:#78CBFF;}
+.materia.quimica:before,.materia.quimica:after{border-color:#78CBFF;}
+
+.materia.quimica:hover{background-color:#4590FF;}
+.materia.quimica:hover:before,.materia.quimica:hover:after{border-color:#4590FF;}
+
+
+.materia.geografia{background-color:#38bf38;margin-left:2.65em;}
+.materia.geografia:before,.materia.geografia:after{border-color:#38bf38;}
+.materia.geografia span{font-size:0.8em;}
+
+.materia.geografia:hover{background-color:#298c29;}
+.materia.geografia:hover:before,.materia.geografia:hover:after{border-color:#298c29;}
+
+.materia.sociologia span{font-size:0.7em;}
+.materia.sociologia{background-color:#E86D19;}
+.materia.sociologia:before,.materia.sociologia:after{border-color:#E86D19;}
+
+.materia.sociologia:hover{background-color:#FF9B2C;}
+.materia.sociologia:hover:before,.materia.sociologia:hover:after{border-color:#FF9B2C;}
+
+.materia.ingles{background-color:#7F4914;}
+.materia.ingles:before,.materia.ingles:after{border-color:#7F4914;}
+
+.materia.ingles:hover{background-color:#7F5C3A;}
+.materia.ingles:hover:before,.materia.ingles:hover:after{border-color:#7F5C3A;}
+.materia.ingles{margin-left:2.65em;}
+
+.materias2 {
+  margin-left: 390px; 
+}
+.materias3 {
+  margin-left: 470px;
+  margin-right: 20px; 
+}
+*, *:before, *:after{ 
+    box-sizing: border-box; 
+    -moz-box-sizing: border-box; 
+    -webkit-box-sizing: border-box; 
+} 
+.botao {  
+    line-height: 1em;
+    text-transform: uppercase;
+    font-size: 3em;
+    text-align: center;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    border-radius: 0.7em;
+    position: relative; 
+    width: 10em; 
+    padding: 0.6em 0 0 0; 
+    background-color: #428BCA; 
+    top: 10px; 
+    -webkit-transform: rotate(0deg) skew(0deg); 
+    transform: rotate(0deg) skew(0deg); 
+    -webkit-transition: background-color ease-out 400ms;
+    -moz-transition: background-color ease-out 400ms;
+    -o-transition: background-color ease-out 400ms;
+    transition: background-color ease-out 400ms; 
+}
+.botao span {
+  display: block;
+  font-size: 0.5em;
+
+}
+.facil {
+  background: #64CC20;
+}
+.facil:hover, .facil:active {
+  background: #4C7F2B;
+}
+.medio {
+  background: #FFDD00;
+}
+.medio:hover, .medio:active {
+  background: #CCC300;
+}
+.dificil {
+  background: #CC2C1B;
+}
+.dificil:hover, .dificil:active {
+  background: #FF3722;
+}
+
+.voltar {
+  margin-left: 120px;
+}
+.voltar2 {
+  text-align: right;
+  margin-right: 100px;
+}
+.pergunta {
+  margin: 50px 90px 10px 90px;
+  font-size: 1.8em;
+  color: #fff;
+  background-color: #6C007F;
+  background-size: 4em;
+  border-radius: 10px;
+  text-align: center;
+}
+.escolha {
+  margin-top: 10px;
+}
+.alternativas {
+  margin-right: 4em;
+  margin-top: 1em;
+  margin-bottom: 20px;
+  margin-left: 3em;
+  font-size: 1.8em;
+  color: #fff;
+  background-color: #6C007F;
+  background-size: 3em;
+  border-radius: 10px;
+  text-align: center;
+}
+.alternativas:hover {
+  background-color: #6C005D;
+  -webkit-transition: background-color ease-out 950ms;
+  -moz-transition: background-color ease-out 950ms;
+  -o-transition: background-color ease-out 950ms;
+  transition: background-color ease-out 950ms; 
+}
+a {
+  text-decoration: none;  
+  color: #fff;
 }
 </style>
 </head>
-<body background="background.jpg">
-<div class="header">
-<h1>Quiztalografia</H1><img src="icone.png" class="cristal"></img>
+<body>
+
+<div class="pagina ativa" id="inicio">
+  <div class="header"><h1 class="titulo">Quiztalografia</h1><span class="cristal">&#160;</span></div>
+  <div class="jogar"><a href="#disciplinas" id="jogar" onclick="return quiz(this);">JOGAR</a></div>
 </div>
-<div class="jogar">
-	<a href="disciplinas.html" id="jogar"><img src="jogarbutton.png" onmouseover="this.src='jogarbutton2.png'" onmouseout="this.src='jogarbutton.png'"></img></a>
+
+<div class="pagina" id="disciplinas">
+  <div class = "header"><h1 class="escolha">Escolha sua disciplina:</h1></div>
+  <br>
+  <div class = "materias">
+    <a href="#dificuldade/historia" class="materia historia">História</a>
+    <a href="#dificuldade/biologia" class="materia biologia">Biologia</a>
+    <a href="#dificuldade/fisica" class="materia fisica">Física</a>
+    <br />
+    <a href="#dificuldade/geografia" class="materia geografia"><span>Geografia</span></a>
+    <a href="#dificuldade/matematica" class="materia matematica"><span>Matemática</span></a>
+    <a href="#dificuldade/quimica" class="materia quimica">Química</a>
+    <br />
+    <a href="#dificuldade/ingles" class="materia ingles">Inglês</a>
+    <a href="#dificuldade/sociologia" class="materia sociologia"><span>Sociologia</span></a>
+    <br><br><br>
+      <a href="#inicio" onclick="return quiz(this);" class="icon-left-big"></a>    
+  </div>
 </div>
-</div>
+<div class="pagina" id="dificuldade">
+  <div class="header"><h1>Escolha sua dificuldade:</h1></div>
+  <br>
+  <a class="botao facil" data-dificuldade="facil" href="#pergunta">Fácil<span>perguntas com 3 alternativas</span></a>
+  <br>
+  <a class="botao medio" data-dificuldade="medio" href="#pergunta">Médio<span>perguntas com 4 alternativas</span></a>
+  <br>
+  <a class="botao dificil" data-dificuldade="dificil" href="#pergunta">Difícil<span>perguntas com 5 alternativas</span></a>
+  <br>
+  <a href="#inicio" onclick="return quiz(this);" class="icon-left-big"></a>
+<div class="pagina" id="pergunta">
+  <div class="header"><h1></h1></div>
+  <div id="questao"></div>
+  <br />
+  <div id="respostas"></div>
+  <a href="#inicio" onclick="return quiz(this);" class="icon-left-big"></a>
+
+<script type="text/javascript" src="quiz-dados.js"></script>
+<script type="text/javascript">
+
+(function(){
+
+var quiz=function(){
+  return true;
+}
+var alternativas = 'abcdefghijklmnop';
+
+quiz.inicio = function(p)
+{
+  console.log('inicio!!!');
+  var a = p.querySelectorAll('span.cristal'), i=a.length;
+  while(i-- > 0) {
+    a[i].innerHTML = alternativas[Math.floor(Math.random()*alternativas.length)];
+  }
+}
+
+
+quiz.dificuldade = function(p)
+{
+  var a = p.querySelectorAll('a.botao'), i=a.length;
+  if(quiz.parametros.length<2) window.location.hash='inicio';
+  console.log('estou na página de dificuldade!!!', a, i);
+  while(i-- > 0) {
+    console.log('colocar o link: #pergunta/'+quiz.parametros[1]+'/'+a[i].getAttribute('data-dificuldade'));
+    a[i].setAttribute('href', '#pergunta/'+quiz.parametros[1]+'/'+a[i].getAttribute('data-dificuldade'));
+  }
+}
+quiz.disciplinas = function(p)
+{
+  console.log('estou na página de disciplinas!!!');
+}
+
+quiz.pergunta = function(p)
+{
+  if(quiz.parametros.length<3) window.location.hash='inicio';
+  var b = Q[quiz.parametros[1]][ quiz.parametros[2] ], c = Math.floor(Math.random()*b.length);
+  console.log('estou na página de pergunta!!!', b[c]);
+
+  var s = '<h1 class="pergunta">'+b[c].pergunta+'</h1>';
+  document.getElementById('questao').innerHTML = s;
+  var i=-1;
+  s='<ol>';
+  while(i++ <alternativas.length) {
+    var l='alternativa_'+alternativas[i];
+    console.log(l);
+    if(l in b[c]) {
+      s+= '<li class="alternativas"><a href="#resposta/'+quiz.parametros.slice(1).join('/')+'/'+alternativas[i]+'">'+b[c][l]+'</a></li>';
+    } else {
+      break;
+    }
+  }
+  s+='</ol>';
+  //s = '<h2 class="alternativas">'+b[c].respostas+'</h2><h2 class="alternativas">'+b[c].alternativa_a+'</h2><h2 class="alternativas">'+b[c].respostas+'</h2>';
+  document.getElementById('respostas').innerHTML = s;
+}
+quiz.parametros=[];
+
+var paginaAnterior='';
+
+function joga()
+{
+  var a = (window.location.hash)?(window.location.hash.substr(1).split('/')):(['inicio']);
+  if(a.length>0) {
+    var link=a[0];
+    quiz.parametros = a;
+    if(link!=paginaAnterior) {
+      var e;
+      if((e=document.getElementById(link)) && e.className.indexOf('pagina')>-1) {
+        carregaPagina(link);
+      } //else if(link.search(//))
+    }
+  }
+}
+
+function carregaPagina(link)
+{
+  var p = document.querySelectorAll('.pagina.ativa'), i=p.length;
+  while(i-- > 0) {
+    p[i].className = 'pagina';
+  }
+  var p=document.getElementById(link);
+  p.className = 'pagina ativa';
+  if(link in quiz) {
+    quiz[link](p);
+  }
+
+  paginaAnterior = link;
+}
+
+
+window.setInterval(joga, 1000);
+
+window.quiz=quiz;
+})();
+
+</script>
 </body>
 </html>
