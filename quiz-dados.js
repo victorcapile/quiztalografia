@@ -77,7 +77,7 @@ Q.fisica.medio = [
 ];
 Q.fisica.dificil = [
 	{ pergunta:'A física médica utiliza um meio de investigação na produção de imagens especial, que é mais preciso que o meio original. Qual das opções abaixo é este meio?', dificuldade:'dificil', a:'Radiografia por contraste de fase', b:'Lupa', c:'Difração de ondas', d:'Raio – X', e:'Microscopia óptica', resposta:'a'},
-	{ pergunta:'Por que a difração de raios-X é muito eficiente quando o material investigado é cristalino?', dificuldade:'dificil', a:'Porque o brilho dos cristais atrai os raios-X.', b:'Porque o brilho dos cristais afasta os raios-X.', c:'Porque seus átomos e moléculas estão dispostos regularmente.', d:'Porque seus átomos e moléculas estão dispostos irregularmente.', e:'Porque os meios opacos quebram os raios-X.'},
+	//{ pergunta:'Por que a difração de raios-X é muito eficiente quando o material investigado é cristalino?', dificuldade:'dificil', a:'Porque o brilho dos cristais atrai os raios-X.', b:'Porque o brilho dos cristais afasta os raios-X.', c:'Porque seus átomos e moléculas estão dispostos regularmente.', d:'Porque seus átomos e moléculas estão dispostos irregularmente.', e:'Porque os meios opacos quebram os raios-X.'},
 	{ pergunta:'Como a cristalografia pode ajudar na redução do consumo de energia?', dificuldade:'dificil', a:'Utilizando o brilho dos cristais para iluminar ambientes fechados.', b:'Fracionando os cristais de água, nas hidrelétricas, aumentando sua capacidade energética.', c:'Multiplicando os raios luminosos conduzidos pelos geradores.', d:'Gerando energia cristalatômica.', e:'Ajudando a desenvolver novos produtos, como materiais isolantes.', resposta:'e'}
 ];
 Q.historia.facil = [	

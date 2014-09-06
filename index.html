@@ -413,6 +413,18 @@ a.f11{position:absolute;z-index:999;width:50px;height:50px;bottom:0;left:0;}
     line-height:16px;
   }
 }
+@media all and (max-width: 640px) {
+  body {
+    font-size:10px;
+    line-height:12px;
+  }
+}
+@media all and (max-width: 480px) {
+  body {
+    font-size:8px;
+    line-height:10px;
+  }
+}
 
 </style>
 </head>
@@ -463,6 +475,9 @@ a.f11{position:absolute;z-index:999;width:50px;height:50px;bottom:0;left:0;}
 <div class="pagina" id="resultado"><p>Tchau!</p></div>
 <div class="pagina" id="final">
     <p>Você acertou <span id="acertos">0</span> <span id="plural">questões</span>.</p>
+    <div class="rodape">
+      <a href="#inicio" onclick="return quiz(this);" class="icon-left-big"></a>    
+    </div>
 </div>
 <a class="f4" href="#final"></a>
 <a class="f5" href="#inicio" onclick="return f5();"></a>
@@ -499,7 +514,6 @@ var alternativas = 'abcdefghijklmnop';
 
 quiz.inicio = function(p)
 {
-  console.log('inicio!!!');
   var a = p.querySelectorAll('span.cristal'), i=a.length;
   while(i-- > 0) {
     a[i].innerHTML = alternativas[Math.floor(Math.random()*alternativas.length)];
@@ -512,8 +526,8 @@ quiz.inicio = function(p)
 
 quiz.dificuldade = function(p)
 {
-  console.log('estou na página de disciplinas!!!');
 }
+
 quiz.disciplinas = function(p)
 {
   var a = p.querySelectorAll('a.materia'), i=a.length;
@@ -521,18 +535,17 @@ quiz.disciplinas = function(p)
         window.location.hash='dificuldade';
         return;
     }
-  console.log('estou na página de disciplinas!!!', a, i);
-  while(i-- > 0) {
-    var d = a[i].getAttribute('data-disciplina'), h;
-    if(respondeu.join(',').indexOf(d)>-1) {
-        h = window.location.hash;
-        a[i].className += ' desliga';
-    } else {
-        h = '#pergunta/'+quiz.parametros[1]+'/'+d;
-        if(a[i].className.indexOf('desliga')>-1) a[i].className = a[i].className.replace(/\s*desliga/, '');
+    while(i-- > 0) {
+        var d = a[i].getAttribute('data-disciplina'), h;
+        if(respondeu.join(',').indexOf(d)>-1) {
+            h = window.location.hash;
+            if(a[i].className.indexOf('desliga')<0) a[i].className += ' desliga';
+        } else {
+            h = '#pergunta/'+quiz.parametros[1]+'/'+d;
+            if(a[i].className.indexOf('desliga')>-1) a[i].className = a[i].className.replace(/\s*desliga/g, '');
+        }
+        a[i].setAttribute('href', h);
     }
-    a[i].setAttribute('href', h);
-  }
 }
 
 
@@ -568,8 +581,6 @@ quiz.resultado = function(p)
         window.location.hash='inicio';
         return;
     }
-    console.log('e o resultado é....', pergunta.resposta, pergunta[pergunta.resposta]);
-
     var s;
 
     if(quiz.parametros[3]==pergunta.resposta) {
@@ -582,7 +593,7 @@ quiz.resultado = function(p)
     }
     document.getElementById('resultado').innerHTML = s;
 
-    setTimeout(resultados, 1000);
+    setTimeout(resultados, 3000);
 }
 
 quiz.final=function(p)
