@@ -102,7 +102,7 @@ body {
 .cristal{
   font: 400 500px/500px 'faux_snow', 'wingdings', 'display';
 }
-h1,h2,h3{font-weight:normal;}
+h1,h2,h3{font-weight:normal;line-height:1.25em;margin:0;}
 .pagina {
     position:absolute;
     top:0;
@@ -115,9 +115,10 @@ h1,h2,h3{font-weight:normal;}
     display:block;
 }
 .header {
-  margin:2em 0 1em 0;
+  margin:2em 0 0 0;
 	text-align: center;
   font-size: 3em;
+  line-height: 2em;
 	color: #fff;
 }
 .titulo {
@@ -154,7 +155,7 @@ h1,h2,h3{font-weight:normal;}
 .materias {
   margin: 0 auto;max-width:640px;
   text-align: center;
-  margin-top:5em;
+  margin-top:1em;
 }
 .materia {
   text-align:center;
@@ -182,6 +183,10 @@ h1,h2,h3{font-weight:normal;}
   width: 0;
   border-left: 2.5em solid transparent !important;
   border-right: 2.5em solid transparent !important;
+  -webkit-transition: border-color ease-out 500ms;
+     -moz-transition: border-color ease-out 500ms;
+       -o-transition: border-color ease-out 500ms;
+          transition: border-color ease-out 500ms;
 }
 
 .materia:before {
@@ -252,6 +257,15 @@ h1,h2,h3{font-weight:normal;}
 .materia.ingles:hover:before,.materia.ingles:hover:after{border-color:#7F5C3A;}
 .materia.ingles{margin-left:2.65em;}
 
+
+
+.materia.desliga{background-color:rgba(0,0,0,0.5);color:#000;}
+.materia.desliga:before,.materia.desliga:after{border-color:rgba(0,0,0,0.5);}
+.materia.desliga:hover{background-color:rgba(0,0,0,0.5);}
+.materia.desliga:hover:before,.materia.desliga:hover:after{border-color:rgba(0,0,0,0.5);}
+
+
+
 .materias2 {
   margin-left: 390px; 
 }
@@ -263,7 +277,14 @@ h1,h2,h3{font-weight:normal;}
     box-sizing: border-box; 
     -moz-box-sizing: border-box; 
     -webkit-box-sizing: border-box; 
-} 
+}
+.rodape{
+  position:absolute;
+  width:80%;
+  left:10%;
+  bottom:2em;
+  text-align:left;
+}
 .botao {  
     line-height: 1em;
     text-transform: uppercase;
@@ -316,31 +337,41 @@ h1,h2,h3{font-weight:normal;}
   text-align: right;
   margin-right: 100px;
 }
-.pergunta {
-  margin: 50px 90px 10px 90px;
-  font-size: 1.8em;
+
+#questao, #respostas{
+  width: 90%;
+  margin:0 auto;
+}
+#respostas{
+  width:80%;
+}
+#questao {
   color: #fff;
   background-color: #6C007F;
-  background-size: 4em;
   border-radius: 10px;
   text-align: center;
+  padding: 1em;
 }
 .escolha {
   margin-top: 10px;
 }
-.alternativas {
-  margin-right: 4em;
-  margin-top: 1em;
-  margin-bottom: 20px;
-  margin-left: 3em;
+.alternativas{
+  list-style-type: lower-latin;
+}
+.alternativas li {
   font-size: 1.8em;
   color: #fff;
-  background-color: #6C007F;
-  background-size: 3em;
-  border-radius: 10px;
-  text-align: center;
+  text-align:left;
+  margin: 0 0 1em 0;
 }
-.alternativas:hover {
+.alternativas a {
+  display:block;
+  color: #fff;
+  background-color: #6C007F;
+  border-radius: 10px;
+  padding:0.5em;
+}
+.alternativas a:hover {
   background-color: #6C005D;
   -webkit-transition: background-color ease-out 950ms;
   -moz-transition: background-color ease-out 950ms;
@@ -351,49 +382,72 @@ a {
   text-decoration: none;  
   color: #fff;
 }
+
+#resultado{
+    text-align:center;color:#fff;
+}
+
+#resultado i{font-size:40em;line-height:1em;margin-top:0.1em;}
+
+#resultado p{}
+
+@media all and (max-width: 1280px) {
+  body {
+    font-size:13px;
+    line-height:16px;
+  }
+}
+
 </style>
 </head>
 <body>
 
 <div class="pagina ativa" id="inicio">
   <div class="header"><h1 class="titulo">Quiztalografia</h1><span class="cristal">&#160;</span></div>
-  <div class="jogar"><a href="#disciplinas" id="jogar" onclick="return quiz(this);">JOGAR</a></div>
+  <div class="jogar"><a href="#dificuldade" id="jogar" onclick="return quiz(this);">JOGAR</a></div>
+</div>
+
+<div class="pagina" id="dificuldade">
+  <div class="header"><h1>Escolha sua dificuldade:</h1></div>
+  <br>
+  <a class="botao facil" data-dificuldade="facil" href="#disciplinas/facil">Fácil<span>perguntas com 3 alternativas</span></a>
+  <br>
+  <a class="botao medio" data-dificuldade="medio" href="#disciplinas/medio">Médio<span>perguntas com 4 alternativas</span></a>
+  <br>
+  <a class="botao dificil" data-dificuldade="dificil" href="#disciplinas/dificil">Difícil<span>perguntas com 5 alternativas</span></a>
+  <br>
+  <div class="rodape">
+      <a href="#inicio" onclick="return quiz(this);" class="icon-left-big"></a>    
+  </div>
 </div>
 
 <div class="pagina" id="disciplinas">
   <div class = "header"><h1 class="escolha">Escolha sua disciplina:</h1></div>
   <br>
   <div class = "materias">
-    <a href="#dificuldade/historia" class="materia historia">História</a>
-    <a href="#dificuldade/biologia" class="materia biologia">Biologia</a>
-    <a href="#dificuldade/fisica" class="materia fisica">Física</a>
-    <br />
-    <a href="#dificuldade/geografia" class="materia geografia"><span>Geografia</span></a>
-    <a href="#dificuldade/matematica" class="materia matematica"><span>Matemática</span></a>
-    <a href="#dificuldade/quimica" class="materia quimica">Química</a>
-    <br />
-    <a href="#dificuldade/ingles" class="materia ingles">Inglês</a>
-    <a href="#dificuldade/sociologia" class="materia sociologia"><span>Sociologia</span></a>
-    <br><br><br>
-      <a href="#inicio" onclick="return quiz(this);" class="icon-left-big"></a>    
+    <a data-disciplina="historia"    href="#historia"   class="materia historia">História</a>
+    <a data-disciplina="biologia"    href="#biologia"   class="materia biologia">Biologia</a>
+    <a data-disciplina="fisica"      href="#fisica"     class="materia fisica">Física</a><br />
+    <a data-disciplina="geografia"   href="#geografia"  class="materia geografia"><span>Geografia</span></a>
+    <a data-disciplina="matematica"  href="#matematica" class="materia matematica"><span>Matemática</span></a>
+    <a data-disciplina="quimica"     href="#quimica"    class="materia quimica">Química</a><br />
+    <a data-disciplina="ingles"      href="#ingles"     class="materia ingles">Inglês</a>
+    <a data-disciplina="sociologia"  href="#sociologia" class="materia sociologia"><span>Sociologia</span></a>
+  </div>
+  <div class="rodape">
+      <a href="#dificuldade" onclick="return quiz(this);" class="icon-left-big"></a>    
   </div>
 </div>
-<div class="pagina" id="dificuldade">
-  <div class="header"><h1>Escolha sua dificuldade:</h1></div>
-  <br>
-  <a class="botao facil" data-dificuldade="facil" href="#pergunta">Fácil<span>perguntas com 3 alternativas</span></a>
-  <br>
-  <a class="botao medio" data-dificuldade="medio" href="#pergunta">Médio<span>perguntas com 4 alternativas</span></a>
-  <br>
-  <a class="botao dificil" data-dificuldade="dificil" href="#pergunta">Difícil<span>perguntas com 5 alternativas</span></a>
-  <br>
-  <a href="#inicio" onclick="return quiz(this);" class="icon-left-big"></a>
 <div class="pagina" id="pergunta">
   <div class="header"><h1></h1></div>
   <div id="questao"></div>
   <br />
   <div id="respostas"></div>
-  <a href="#inicio" onclick="return quiz(this);" class="icon-left-big"></a>
+</div>
+<div class="pagina" id="resultado"><i>?</i></div>
+<div class="pagina" id="final">
+    <p>Você acertou <span id="acertos">0</span> <span id="plural">questões</span>.</p>
+</div>
 
 <script type="text/javascript" src="quiz-dados.js"></script>
 <script type="text/javascript">
@@ -417,45 +471,98 @@ quiz.inicio = function(p)
 
 quiz.dificuldade = function(p)
 {
-  var a = p.querySelectorAll('a.botao'), i=a.length;
-  if(quiz.parametros.length<2) window.location.hash='inicio';
-  console.log('estou na página de dificuldade!!!', a, i);
-  while(i-- > 0) {
-    console.log('colocar o link: #pergunta/'+quiz.parametros[1]+'/'+a[i].getAttribute('data-dificuldade'));
-    a[i].setAttribute('href', '#pergunta/'+quiz.parametros[1]+'/'+a[i].getAttribute('data-dificuldade'));
-  }
+  console.log('estou na página de disciplinas!!!');
 }
 quiz.disciplinas = function(p)
 {
-  console.log('estou na página de disciplinas!!!');
+  var a = p.querySelectorAll('a.materia'), i=a.length;
+    if(quiz.parametros.length<2) {
+        window.location.hash='dificuldade';
+        return;
+    }
+  console.log('estou na página de disciplinas!!!', a, i);
+  while(i-- > 0) {
+    var d = a[i].getAttribute('data-disciplina'), h;
+    if(respondeu.join(',').indexOf(d)>-1) {
+        h = window.location.hash;
+        a[i].className += ' desliga';
+    } else {
+        h = '#pergunta/'+quiz.parametros[1]+'/'+d;
+    }
+    a[i].setAttribute('href', h);
+  }
 }
+
 
 quiz.pergunta = function(p)
 {
-  if(quiz.parametros.length<3) window.location.hash='inicio';
-  var b = Q[quiz.parametros[1]][ quiz.parametros[2] ], c = Math.floor(Math.random()*b.length);
-  console.log('estou na página de pergunta!!!', b[c]);
-
-  var s = '<h1 class="pergunta">'+b[c].pergunta+'</h1>';
-  document.getElementById('questao').innerHTML = s;
-  var i=-1;
-  s='<ol>';
-  while(i++ <alternativas.length) {
-    var l='alternativa_'+alternativas[i];
-    console.log(l);
-    if(l in b[c]) {
-      s+= '<li class="alternativas"><a href="#resposta/'+quiz.parametros.slice(1).join('/')+'/'+alternativas[i]+'">'+b[c][l]+'</a></li>';
-    } else {
-      break;
+    if(quiz.parametros.length<3) {
+        window.location.hash='inicio';
+        return;
     }
-  }
-  s+='</ol>';
-  //s = '<h2 class="alternativas">'+b[c].respostas+'</h2><h2 class="alternativas">'+b[c].alternativa_a+'</h2><h2 class="alternativas">'+b[c].respostas+'</h2>';
-  document.getElementById('respostas').innerHTML = s;
+    var b = Q[quiz.parametros[2]][ quiz.parametros[1] ], c = Math.floor(Math.random()*b.length);
+    pergunta = b[c];
+    respondeu.push(quiz.parametros[2]);
+
+    var s = '<h1 class="pergunta">'+pergunta.pergunta+'</h1>';
+    document.getElementById('questao').innerHTML = s;
+    var i=-1;
+    s='<ol class="alternativas">';
+    while(i++ <alternativas.length) {
+        var l=alternativas[i];
+        if(l in pergunta) {
+            s+= '<li><a href="#resultado/'+quiz.parametros.slice(1).join('/')+'/'+alternativas[i]+'">'+pergunta[l]+'</a></li>';
+        } else {
+            break;
+        }
+    }
+    s+='</ol>';
+    document.getElementById('respostas').innerHTML = s;
 }
+
+quiz.resultado = function(p)
+{
+    if(quiz.parametros.length<4 || !pergunta) {
+        window.location.hash='inicio';
+        return;
+    }
+    console.log('e o resultado é....', pergunta.resposta, pergunta[pergunta.resposta]);
+
+    var s;
+
+    if(quiz.parametros[3]==pergunta.resposta) {
+        // uhu!!!
+        s = '<i class="icon-emo-wink2"></i><p>Bla bla bla</p>';
+        acertos++;
+    } else {
+        // oh-oh
+        s = '<i class="icon-emo-cry"></i><p>Bla bla bla</p>';
+    }
+    document.getElementById('resultado').innerHTML = s;
+
+    setTimeout(resultados, 1000);
+}
+
+quiz.final=function(p)
+{
+    if(respondeu.length<8) {
+        window.location.hash='#inicio';
+    }
+}
+
+function resultados()
+{
+    if(respondeu.length>=8) {
+        window.location.hash='#final';
+    } else {
+        window.location.hash='#disciplinas/'+quiz.parametros[1];
+    }
+}
+
 quiz.parametros=[];
 
 var paginaAnterior='';
+var pergunta, respondeu=[], acertos=0;
 
 function joga()
 {
@@ -488,7 +595,7 @@ function carregaPagina(link)
 }
 
 
-window.setInterval(joga, 1000);
+window.setInterval(joga, 300);
 
 window.quiz=quiz;
 })();
