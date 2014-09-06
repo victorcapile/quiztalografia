@@ -72,7 +72,7 @@
  }
 
 
-html {
+html,body {
   font-size: 100%;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
@@ -87,9 +87,6 @@ background: -o-linear-gradient(-45deg,  #7e3b8a 0%,#e3cde2 100%);
 background: -ms-linear-gradient(-45deg,  #7e3b8a 0%,#e3cde2 100%);
 background: linear-gradient(135deg,  #7e3b8a 0%,#e3cde2 100%);
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7e3b8a', endColorstr='#e3cde2',GradientType=1 );
-
-}    
-html, body{
     width:100%;
     height:100%;
     margin:0;
@@ -383,13 +380,32 @@ a {
   color: #fff;
 }
 
-#resultado{
+#resultado, #final{
     text-align:center;color:#fff;
 }
 
 #resultado i{font-size:40em;line-height:1em;margin-top:0.1em;}
 
-#resultado p{}
+#resultado p {
+    font-size: 3em;
+    line-height: 1em;
+    width: 80%;
+    margin: 1em auto 1em auto;
+}
+
+#final p {
+    font-size: 4em;
+    line-height:1em;
+}
+#acertos {
+    display:block;
+    font-size: 10em;
+    line-height:1em;
+    font-weight: bold;
+}
+a.f4{position:absolute;z-index:999;width:50px;height:50px;top:0;left:0;}
+a.f5{position:absolute;z-index:999;width:50px;height:50px;bottom:0;right:0;}
+a.f11{position:absolute;z-index:999;width:50px;height:50px;bottom:0;left:0;}
 
 @media all and (max-width: 1280px) {
   body {
@@ -444,13 +460,35 @@ a {
   <br />
   <div id="respostas"></div>
 </div>
-<div class="pagina" id="resultado"><i>?</i></div>
+<div class="pagina" id="resultado"><p>Tchau!</p></div>
 <div class="pagina" id="final">
     <p>Você acertou <span id="acertos">0</span> <span id="plural">questões</span>.</p>
 </div>
-
+<a class="f4" href="#final"></a>
+<a class="f5" href="#inicio" onclick="return f5();"></a>
+<a class="f11" href="#f11" onclick="return f11();"></a>
 <script type="text/javascript" src="quiz-dados.js"></script>
 <script type="text/javascript">
+
+function f11(){
+    var e=document.body;
+    if (e.requestFullscreen) {
+      e.requestFullscreen();
+    } else if (e.msRequestFullscreen) {
+      e.msRequestFullscreen();
+    } else if (e.mozRequestFullScreen) {
+      e.mozRequestFullScreen();
+    } else if (e.webkitRequestFullscreen) {
+      e.webkitRequestFullscreen();
+    }
+    return false;  
+}
+
+function f5()
+{
+    window.location.hash='inicio';
+    return false; 
+}
 
 (function(){
 
@@ -466,6 +504,9 @@ quiz.inicio = function(p)
   while(i-- > 0) {
     a[i].innerHTML = alternativas[Math.floor(Math.random()*alternativas.length)];
   }
+  pergunta=null;
+  respondeu=[];
+  acertos=0;
 }
 
 
@@ -488,6 +529,7 @@ quiz.disciplinas = function(p)
         a[i].className += ' desliga';
     } else {
         h = '#pergunta/'+quiz.parametros[1]+'/'+d;
+        if(a[i].className.indexOf('desliga')>-1) a[i].className = a[i].className.replace(/\s*desliga/, '');
     }
     a[i].setAttribute('href', h);
   }
@@ -532,11 +574,11 @@ quiz.resultado = function(p)
 
     if(quiz.parametros[3]==pergunta.resposta) {
         // uhu!!!
-        s = '<i class="icon-emo-wink2"></i><p>Bla bla bla</p>';
+        s = '<p>Uhu!! Você acertou!</p><i class="icon-emo-wink2"></i>';
         acertos++;
     } else {
         // oh-oh
-        s = '<i class="icon-emo-cry"></i><p>Bla bla bla</p>';
+        s = '<p>Quase! Você errou! <br />A resposta certa é: <strong>'+pergunta[pergunta.resposta]+'</strong></p><i class="icon-emo-cry"></i>';
     }
     document.getElementById('resultado').innerHTML = s;
 
@@ -545,9 +587,13 @@ quiz.resultado = function(p)
 
 quiz.final=function(p)
 {
-    if(respondeu.length<8) {
+    if(false && respondeu.length<8) {
         window.location.hash='#inicio';
+        return;
     }
+
+    document.getElementById('acertos').innerHTML = acertos;
+    document.getElementById('plural').innerHTML = (acertos == 1)?('questão'):('questões');
 }
 
 function resultados()
